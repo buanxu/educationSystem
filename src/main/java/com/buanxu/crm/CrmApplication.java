@@ -9,6 +9,7 @@ public class CrmApplication {
     public static void main(String[] args) {
         System.out.println("开启项目");
         System.out.println("springboot");
+        System.out.println("test commit");
         SpringApplication.run(CrmApplication.class, args);
     }
 
