@@ -28,7 +28,7 @@
 
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo layui-hide-xs layui-bg-black">layout demo</div>
+        <div class="layui-logo layui-hide-xs layui-bg-black">长沙理工大学教务系统</div>
         <!-- 头部区域（可配合layui 已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <!-- 移动端显示 -->
@@ -36,11 +36,11 @@
                 <i class="layui-icon layui-icon-spread-left"></i>
             </li>
 
-            <li class="layui-nav-item layui-hide-xs"><a href="">nav 1</a></li>
-            <li class="layui-nav-item layui-hide-xs"><a href="">nav 2</a></li>
-            <li class="layui-nav-item layui-hide-xs"><a href="">nav 3</a></li>
+            <li class="layui-nav-item layui-hide-xs"><a href="">控制台</a></li>
+            <li class="layui-nav-item layui-hide-xs"><a href="">商品管理</a></li>
+            <li class="layui-nav-item layui-hide-xs"><a href="">用户</a></li>
             <li class="layui-nav-item">
-                <a href="javascript:;">nav groups</a>
+                <a href="javascript:;">其他系统</a>
                 <dl class="layui-nav-child">
                     <dd><a href="">menu 11</a></dd>
                     <dd><a href="">menu 22</a></dd>
@@ -54,7 +54,7 @@
             <li class="layui-nav-item layui-hide layui-show-md-inline-block">
                 <a href="javascript:;">
                     <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
-                    tester
+                    南军
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="">Your Profile</a></dd>
@@ -75,66 +75,30 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">menu group 1</a>
+                    <a class="" href="javascript:;">常用功能</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">menu 1</a></dd>
-                        <dd><a href="javascript:;">menu 2</a></dd>
-                        <dd><a href="javascript:;">menu 3</a></dd>
-                        <dd><a href="">the links</a></dd>
+                        <dd><a th:href="@{/courseOrder/list}" target="content-iFrm">课程订单</a></dd>
+                        <dd><a th:href="@{/student/list}" target="content-iFrm">学生信息</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">menu group 2</a>
+                    <a href="javascript:;">数据分析</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">list 1</a></dd>
-                        <dd><a href="javascript:;">list 2</a></dd>
-                        <dd><a href="">超链接</a></dd>
+                        <dd><a href="javascript:;">收入报表</a></dd>
+                        <dd><a href="javascript:;">学生分布图</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="javascript:;">click menu item</a></li>
-                <li class="layui-nav-item"><a href="">the links</a></li>
+                <li class="layui-nav-item"><a href="javascript:;">发布计划</a></li>
+                <li class="layui-nav-item"><a href="">点点滴滴</a></li>
             </ul>
         </div>
     </div>
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">
-            内容主体区域
-
-            <br><br>
-
-            <blockquote class="layui-elem-quote layui-text">
-                <ul>
-
-
-                    <li>
-                        该页面只是简单的管理系统的界面基础布局示例，并不是一整套界面布局方案，您可以关注基于 layui 的通用型管理系统界面模板解决方案：
-                        <a href="/layuiadmin/" target="_blank" class="layui-btn">layuiAdmin</a>
-                    </li>
-                    <li>
-                        layui 之所以赢得如此多人的青睐，更多是在于它“前后界面兼备”的能力。既可编织出绚丽的前台页面，又可满足繁杂的管理系统的界面需求。
-                        <br>layui 管理基本布局， 致力于让每一位开发者都能轻松搭建自己的管理系统模板。
-                    </li>
-                </ul>
-            </blockquote>
-
-            <a href="/doc/element/layout.html#admin" target="_blank" class="layui-btn">查看该布局代码</a>
-            <br><br><br>
-
-            <div class="layui-card layui-panel">
-                <div class="layui-card-header">
-                    下面是充数内容，为的是出现滚动条
-                </div>
-                <div class="layui-card-body">
-                    充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>充数内容<br>你还真滑到了底部呀
-                </div>
-            </div>
-            <br><br>
-
-
-
-        </div>
+        <iframe name="content-iFrm" frameborder="0" border="0" class="larry-iframe"
+        style="width:100%;height:100%" th:src="@{/courseOrder/list}">
+        </iframe>
     </div>
 
     <div class="layui-footer">
