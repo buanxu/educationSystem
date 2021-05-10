@@ -8,6 +8,7 @@ public class CrmApplication {
 
     public static void main(String[] args) {
         System.out.println("开启项目");
+        System.out.println("springboot");
         SpringApplication.run(CrmApplication.class, args);
     }
 
