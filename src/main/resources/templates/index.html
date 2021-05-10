@@ -2,7 +2,7 @@
 
 
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,8 +14,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
 
-    <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1620578628065"  media="all">
-    <script src="//res.layui.com/layui/dist/layui.js?t=1620578628065" charset="utf-8"></script>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}"  media="all">
+    <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
 
     <style>
         /* 移动端 */
