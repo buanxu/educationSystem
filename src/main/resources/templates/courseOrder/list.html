@@ -38,7 +38,7 @@
         //详见：https://www.layui.com/doc/modules/table.html#totalRow
         table.render({
             elem: '#test'
-            ,url:'/test/table/demo1.json'
+            ,url:'http://localhost:8888/crm/courseOrder/listJson'
             ,toolbar: '#toolbarDemo'
             ,title: '用户数据表'
             ,totalRow: true
@@ -46,17 +46,17 @@
                 [
                     {type: 'checkbox', fixed: 'left'}
                     ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计'}
-                    ,{field:'username', title:'用户名', width:120, edit: 'text'}
-                    ,{field:'username', title:'微信备注', width:120, edit: 'text'}
-                    ,{field:'username', title:'微信ID', width:120, edit: 'text'}
-                    ,{field:'username', title:'QQ号', width:120, edit: 'text'}
-                    ,{field:'username', title:'购买课程', width:120, edit: 'text'}
-                    ,{field:'username', title:'价格', width:120, edit: 'text'}
-                    ,{field:'username', title:'订单日期', width:120, edit: 'text'}
+                    ,{field:'name', title:'姓名', width:120, edit: 'text'}
+                    ,{field:'wechat_mark', title:'微信备注', width:120, edit: 'text'}
+                    ,{field:'wechat_no', title:'微信ID', width:120, edit: 'text'}
+                    ,{field:'qq_no', title:'QQ号', width:120, edit: 'text'}
+                    ,{field:'course_name', title:'购买课程', width:120, edit: 'text'}
+                    ,{field:'course_price', title:'价格', width:120, edit: 'text'}
+                    ,{field:'order_date', title:'订单日期', width:120, edit: 'text'}
                     ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
                 ]
             ]
-            ,page: true  //开启分页
+            ,page: true
         });
 
         //工具栏事件
