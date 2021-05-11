@@ -38,14 +38,14 @@
         //详见：https://www.layui.com/doc/modules/table.html#totalRow
         table.render({
             elem: '#test'
-            ,url:'http://localhost:8888/crm/courseOrder/listJson'
+            ,url:'http://localhost:8888/crm/courseOrder/listJson'   //layui访问此接口时会向后台传参page、limit，这两个参数用来做分页
             ,toolbar: '#toolbarDemo'
             ,title: '用户数据表'
             ,totalRow: true
             ,cols: [
                 [
                     {type: 'checkbox', fixed: 'left'}
-                    ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计'}
+                    // ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计'}
                     ,{field:'name', title:'姓名', width:120, edit: 'text'}
                     ,{field:'wechat_mark', title:'微信备注', width:120, edit: 'text'}
                     ,{field:'wechat_no', title:'微信ID', width:120, edit: 'text'}
@@ -56,7 +56,9 @@
                     ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
                 ]
             ]
-            ,page: true
+            ,limit:10   //默认分页显示的记录数，该值必须已经在limits中定义了
+            ,limits:[10,11,12,13,14,15]  //设置多个分页选项，每页显示多少条记录，
+            ,page: true   //开启分页
         });
 
         //工具栏事件

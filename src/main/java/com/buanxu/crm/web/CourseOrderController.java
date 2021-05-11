@@ -8,10 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 @Controller
 @RequestMapping("/courseOrder")
 public class CourseOrderController {
@@ -26,8 +22,10 @@ public class CourseOrderController {
 
     @RequestMapping("/listJson")
     @ResponseBody
-    public PageResult<CourseOrder> listJson(){
-        PageResult<CourseOrder> result=courseOrderService.findPageResult(null, 1, 8);
+    public PageResult<CourseOrder> listJson(int page,int limit){//layui传来的参数用来做分页
+        System.out.println(page);
+        System.out.println(limit);
+        PageResult<CourseOrder> result=courseOrderService.findPageResult(null, page, limit);
 
         return result;
     }

@@ -9,6 +9,6 @@
     </select>
 
     <select id="finListByMap" parameterType="Map" resultType="CourseOrder">
-        select * from t_course_order
+        select * from t_course_order limit #{page},#{pageSize}
     </select>
 </mapper>

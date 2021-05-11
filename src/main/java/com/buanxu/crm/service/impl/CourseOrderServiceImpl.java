@@ -25,6 +25,8 @@ public class CourseOrderServiceImpl implements ICourseOrderService {
         result.setCode(0);
 
         Map<String,Object> params=new HashMap<>();
+        params.put("page",(page-1)*pageSize);
+        params.put("pageSize", pageSize);
         //查询有多少条记录
         int totalCount=courseOrderDao.findCountByMap(params);
         result.setCount(totalCount);
