@@ -11,4 +11,24 @@
     <select id="finListByMap" parameterType="Map" resultType="CourseOrder">
         select * from t_course_order limit #{page},#{pageSize}
     </select>
+    
+    <insert id="save" parameterType="CourseOrder">
+        INSERT INTO t_course_order
+          (uuid,order_id,name,wechat_no,wechat_mark,
+           qq_no,tel,course_name,course_price,order_date,
+           update_datetime,remark)
+        VALUES
+          (UUID(), UUID(), #{name}, #{wechat_no},#{wechat_mark},
+          #{qq_no}, #{tel}, #{course_name},
+          #{course_price},#{order_date},
+          CURRENT_TIMESTAMP(),#{remark});
+    </insert>
+
+    <select id="findByCourseId" parameterType="String" resultType="CourseOrder">
+        select * from t_course_order where order_id=#{orderId}
+    </select>
+    
+    <delete id="delete" parameterType="String">
+        delete from t_course_order where order_id=#{orderId}
+    </delete>
 </mapper>

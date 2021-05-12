@@ -23,4 +23,19 @@ public interface CourseOrderDao {
      * @return
      */
     public List<CourseOrder> finListByMap(Map<String,Object> map);
+
+    /**
+     * 保存课程订单信息
+     */
+    public void save(CourseOrder courseOrder);
+
+    /**
+     * 通过课程id查询课程的订单信息
+     */
+    public CourseOrder findByCourseId(String orderId);
+
+    /**
+     * 删除某人的课程订单信息
+     */
+    public void delete(String orderId);
 }

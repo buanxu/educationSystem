@@ -37,4 +37,20 @@ public class CourseOrderServiceImpl implements ICourseOrderService {
 
         return result;
     }
+
+    @Override
+    public void save(CourseOrder courseOrder) {
+        courseOrderDao.save(courseOrder);
+    }
+
+    @Override
+    public CourseOrder findByCourseId(String orderId) {
+        CourseOrder courseOrder = courseOrderDao.findByCourseId(orderId);
+        return courseOrder;
+    }
+
+    @Override
+    public void delete(String orderId) {
+        courseOrderDao.delete(orderId);
+    }
 }
