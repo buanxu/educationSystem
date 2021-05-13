@@ -36,6 +36,13 @@ public class CourseOrderController {
         return crudResult;
     }
 
+    @RequestMapping("/update")
+    public String update(Model model,String order_id){
+        CourseOrder courseOrder = courseOrderService.findByCourseId(order_id);
+        model.addAttribute("courseOrder", courseOrder);
+        return "courseOrder/update";
+    }
+
     @RequestMapping("/detail")
     public String detail(Model model,String order_id) {
         CourseOrder courseOrder = courseOrderService.findByCourseId(order_id);
@@ -46,9 +53,14 @@ public class CourseOrderController {
     @RequestMapping("/save")
     @ResponseBody
     public CRUDResult save(CourseOrder order){
-        System.out.println(order);
-        courseOrderService.save(order);
         CRUDResult result=new CRUDResult();
+
+        if (order.getOrder_id()==null){//插入数据
+            courseOrderService.save(order);
+        }else{//修改数据
+            courseOrderService.update(order);
+        }
+        System.out.println(order);
         return result;
     }
 
@@ -61,4 +73,6 @@ public class CourseOrderController {
 
         return result;
     }
+
+
 }

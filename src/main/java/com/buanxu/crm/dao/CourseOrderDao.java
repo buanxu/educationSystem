@@ -38,4 +38,9 @@ public interface CourseOrderDao {
      * 删除某人的课程订单信息
      */
     public void delete(String orderId);
+
+    /**
+     * 修改订单信息
+     */
+    public void update(CourseOrder courseOrder);
 }

@@ -53,4 +53,11 @@ public class CourseOrderServiceImpl implements ICourseOrderService {
     public void delete(String orderId) {
         courseOrderDao.delete(orderId);
     }
+
+    @Override
+    public void update(CourseOrder courseOrder) {
+        courseOrderDao.update(courseOrder);
+    }
+
+
 }
