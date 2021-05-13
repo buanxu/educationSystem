@@ -30,7 +30,6 @@
 
 
 <!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
-
 <script>
     var $;
     layui.use('table', function(){
@@ -41,7 +40,7 @@
         //详见：https://www.layui.com/doc/modules/table.html#totalRow
         table.render({
             elem: '#test'
-            ,url:'../courseOrder/listJson'   //layui访问此接口时会向后台传参page、limit，这两个参数用来做分页
+            ,url:'../courseOrder/listJson' //layui访问此接口时会向后台传参page、limit，这两个参数用来做分页
             ,toolbar: '#toolbarDemo'
             ,title: '用户数据表'
             ,totalRow: true
