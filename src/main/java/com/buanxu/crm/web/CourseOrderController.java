@@ -66,10 +66,11 @@ public class CourseOrderController {
 
     @RequestMapping("/listJson")
     @ResponseBody
-    public PageResult<CourseOrder> listJson(int page,int limit){//layui传来的参数用来做分页
+    public PageResult<CourseOrder> listJson(CourseOrder condition,int page,int limit){//layui传来的参数用来做分页
         System.out.println(page);
         System.out.println(limit);
-        PageResult<CourseOrder> result=courseOrderService.findPageResult(null, page, limit);
+        System.out.println(condition);
+        PageResult<CourseOrder> result=courseOrderService.findPageResult(condition, page, limit);
 
         return result;
     }

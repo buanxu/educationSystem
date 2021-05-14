@@ -4,12 +4,29 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.buanxu.crm.dao.CourseOrderDao">
 
+    <sql id="search_where">
+        <where>
+            <if test="condition.wechat_no !=null and condition.wechat_no !='' ">
+                wechat_no like '%${condition.wechat_no}%'
+            </if>
+            <if test="condition.wechat_mark !=null and condition.wechat_mark !='' ">
+                wechat_mark like '%${condition.mark}%'
+            </if>
+            <if test="condition.qq_no !=null and condition.qq_no !='' ">
+                qq_no like '%${condition.qq_no}%'
+            </if>
+        </where>
+    </sql>
+
     <select id="findCountByMap" parameterType="Map" resultType="int">
         select count(name) from t_course_order
+        <include refid="search_where"></include>
     </select>
 
     <select id="finListByMap" parameterType="Map" resultType="CourseOrder">
-        select * from t_course_order limit #{page},#{pageSize}
+        select * from t_course_order
+        <include refid="search_where"></include>
+        limit #{page},#{pageSize}
     </select>
     
     <insert id="save" parameterType="CourseOrder">

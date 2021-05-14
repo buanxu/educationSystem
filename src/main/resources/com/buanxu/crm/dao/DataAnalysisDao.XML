@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buanxu.crm.dao.DataAnalysisDao">
+
+    <select id="findMonthIncome" resultType="MonthIncome">
+        SELECT
+            LEFT(order_date,7) AS MONTH,COUNT(*) AS orders,SUM(CONVERT(course_price,DECIMAL(18,2))) AS totalIncome
+            FROM t_course_order
+            GROUP BY MONTH;
+    </select>
+</mapper>

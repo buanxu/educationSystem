@@ -25,6 +25,7 @@ public class CourseOrderServiceImpl implements ICourseOrderService {
         result.setCode(0);
 
         Map<String,Object> params=new HashMap<>();
+        params.put("condition", condition);
         params.put("page",(page-1)*pageSize);
         params.put("pageSize", pageSize);
         //查询有多少条记录

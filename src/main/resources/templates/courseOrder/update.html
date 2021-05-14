@@ -54,7 +54,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">购买课程</label>
             <div class="layui-input-inline">
-                <select name="course_name" lay-verify="required" lay-search="">
+                <select name="course_name" id="course_name" lay-verify="required" lay-search="">
                     <option value="">直接选择或搜索选择</option>
                     <option value="">直接选择或搜索选择</option>
                     <option value="图像处理技术">图像处理技术</option>
@@ -96,17 +96,22 @@
 </form >
 
 <!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
-<script>
+<script th:inline="javascript">
     var $;
     var layer;
 
     //加载表单、laydate模块
-    layui.use(['form','laydate'], function(){
+    layui.use(['form','laydate','jquery'], function(){
         layer=layui.layer;
+        $=layui.jquery;
         var laydate = layui.laydate;
         laydate.render({  //渲染指定标签
             elem: '#order_date'
         });
+
+        var orderName=[[${courseOrder.course_name}]];
+        var select = 'dd[lay-value=' + orderName + ']';  //获取自动选中的内容
+        $('#course_name').siblings("div.layui-form-select").find('dl').find(select).click();// 触发点击事件，实现自动选择
     });
 
     function doSave() {

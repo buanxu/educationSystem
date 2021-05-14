@@ -13,6 +13,4 @@ public interface ICourseOrderService {
     public void delete(String orderId);
 
     public void update(CourseOrder courseOrder);
-
-
 }
