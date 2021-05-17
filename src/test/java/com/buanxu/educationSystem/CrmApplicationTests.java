@@ -1,4 +1,4 @@
-package com.buanxu.crm;
+package com.buanxu.educationSystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

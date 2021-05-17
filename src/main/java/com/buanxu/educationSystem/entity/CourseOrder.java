@@ -1,7 +1,8 @@
-package com.buanxu.crm.entity;
+package com.buanxu.educationSystem.entity;
 
+import java.io.Serializable;
 import java.util.Date;
-public class CourseOrder {
+public class CourseOrder implements Serializable {
     private String uuid;
     private String order_id;
     private String name;

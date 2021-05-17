@@ -1,7 +1,7 @@
-package com.buanxu.crm.service;
+package com.buanxu.educationSystem.service;
 
-import com.buanxu.crm.entity.CourseOrder;
-import com.buanxu.crm.entity.PageResult;
+import com.buanxu.educationSystem.entity.CourseOrder;
+import com.buanxu.educationSystem.entity.PageResult;
 
 public interface ICourseOrderService {
     public PageResult<CourseOrder> findPageResult(CourseOrder condition,int page,int pageSize);

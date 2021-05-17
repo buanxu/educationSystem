@@ -1,7 +1,7 @@
-package com.buanxu.crm.web;
+package com.buanxu.educationSystem.web;
 
-import com.buanxu.crm.entity.MonthIncome;
-import com.buanxu.crm.service.DataAnalysisService;
+import com.buanxu.educationSystem.entity.MonthIncome;
+import com.buanxu.educationSystem.service.DataAnalysisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

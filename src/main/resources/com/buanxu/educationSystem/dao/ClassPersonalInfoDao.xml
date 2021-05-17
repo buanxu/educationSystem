@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buanxu.educationSystem.dao.ClassPersonalInfoDao">
+    <sql id="classTable">
+        <where>
+            <if test="classTable==telecom1601_personalinfo">telecom1601_personalinfo</if>
+            <if test="classTable==telecom1602_personalinfo">telecom1602_personalinfo</if>
+            <if test="classTable==electrical1601_personalinfo">electrical1601_personalinfo</if>
+            <if test="classTable==electrical1602_personalinfo">electrical1602_personalinfo</if>
+            <if test="classTable==automation1601_personalinfo">automation1601_personalinfo</if>
+            <if test="classTable==automation1602_personalinfo">automation1602_personalinfo</if>
+        </where>
+    </sql>
+
+
+    <select id="findCountByMap" resultType="int" parameterType="Map">
+        select count(name) from <include refid="classTable"></include>
+    </select>
+
+    <select id="finListByMap" parameterType="Map" resultType="PersonalInfo">
+        select * from <include refid="classTable"></include>
+        limit #{startIndex},#{pageSize}
+    </select>
+
+</mapper>

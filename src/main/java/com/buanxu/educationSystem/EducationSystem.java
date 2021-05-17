@@ -1,13 +1,12 @@
-package com.buanxu.crm;
+package com.buanxu.educationSystem;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CrmApplication {
+public class EducationSystem {
 
     public static void main(String[] args) {
-        SpringApplication.run(CrmApplication.class, args);
+        SpringApplication.run(EducationSystem.class, args);
     }
 }

@@ -1,9 +1,9 @@
-package com.buanxu.crm.service.impl;
+package com.buanxu.educationSystem.service.impl;
 
-import com.buanxu.crm.dao.CourseOrderDao;
-import com.buanxu.crm.entity.CourseOrder;
-import com.buanxu.crm.entity.PageResult;
-import com.buanxu.crm.service.ICourseOrderService;
+import com.buanxu.educationSystem.dao.CourseOrderDao;
+import com.buanxu.educationSystem.entity.CourseOrder;
+import com.buanxu.educationSystem.entity.PageResult;
+import com.buanxu.educationSystem.service.ICourseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

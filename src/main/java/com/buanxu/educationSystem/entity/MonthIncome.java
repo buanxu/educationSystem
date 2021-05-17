@@ -1,6 +1,8 @@
-package com.buanxu.crm.entity;
+package com.buanxu.educationSystem.entity;
 
-public class MonthIncome {
+import java.io.Serializable;
+
+public class MonthIncome implements Serializable {
     private String month;  //月份
     private String totalIncome;  //每月的总收入
     private String orders;      //每月的订单

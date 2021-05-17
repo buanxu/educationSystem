@@ -1,6 +1,8 @@
-package com.buanxu.crm.entity;
+package com.buanxu.educationSystem.entity;
 
-public class CRUDResult {
+import java.io.Serializable;
+
+public class CRUDResult implements Serializable {
     private int success=1;
     private String msg="";
 

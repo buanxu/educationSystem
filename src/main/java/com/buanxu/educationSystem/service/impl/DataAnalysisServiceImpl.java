@@ -1,8 +1,8 @@
-package com.buanxu.crm.service.impl;
+package com.buanxu.educationSystem.service.impl;
 
-import com.buanxu.crm.dao.DataAnalysisDao;
-import com.buanxu.crm.entity.MonthIncome;
-import com.buanxu.crm.service.DataAnalysisService;
+import com.buanxu.educationSystem.dao.DataAnalysisDao;
+import com.buanxu.educationSystem.entity.MonthIncome;
+import com.buanxu.educationSystem.service.DataAnalysisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

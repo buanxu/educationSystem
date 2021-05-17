@@ -1,8 +1,9 @@
-package com.buanxu.crm.entity;
+package com.buanxu.educationSystem.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class PageResult<T> {
+public class PageResult<T> implements Serializable {
     private int code;   //0 表示成功   1表示失败
     private String msg;   //错误信息
     private int count;    //总记录数  300000

@@ -1,6 +1,6 @@
-package com.buanxu.crm.service;
+package com.buanxu.educationSystem.service;
 
-import com.buanxu.crm.entity.MonthIncome;
+import com.buanxu.educationSystem.entity.MonthIncome;
 
 import java.util.List;
 

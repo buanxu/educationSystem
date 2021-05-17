@@ -1,7 +1,6 @@
-package com.buanxu.crm.dao;
+package com.buanxu.educationSystem.dao;
 
-import com.buanxu.crm.entity.CourseOrder;
-import com.buanxu.crm.entity.MonthIncome;
+import com.buanxu.educationSystem.entity.MonthIncome;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
