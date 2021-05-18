@@ -91,25 +91,22 @@
                                     </dl>
                                 </li>
                                 <li class="layui-nav-item layui-nav-itemed">
-                                    <a class="" href="javascript:;" style="font-size: medium">班级课程管理</a>
-                                    <dl class="layui-nav-child">
-                                        <dd><a  :href="@{/courseOrder/list}" target="content-iFrm" >电信1601</a></dd>
-                                        <dd><a  :href="@{/courseOrder/list}" target="content-iFrm" >电信1602</a></dd>
-                                        <dd><a  :href="@{/courseOrder/list}" target="content-iFrm" >电气1601</a></dd>
-                                        <dd><a  :href="@{/courseOrder/list}" target="content-iFrm" >电气1602</a></dd>
-                                        <dd><a  :href="@{/courseOrder/list}" target="content-iFrm" >自动化1601</a></dd>
-                                        <dd><a  :href="@{/courseOrder/list}" target="content-iFrm" >自动化1602</a></dd>
+                                    <a class="" href="javascript:;" style="font-size: medium">专业课程管理</a>
+                                    <dl class="layui-nav-child" style="font-size: larger;margin-left: 15px">
+                                        <dd><a  th:href="@{/majorCourse/list(majorCourse='telecom_courses')}" target="content-iFrm" >电子信息工程</a></dd>
+                                        <dd><a  th:href="@{/majorCourse/list(majorCourse='electrical_courses')}" target="content-iFrm" >电气工程</a></dd>
+                                        <dd><a  th:href="@{/majorCourse/list(majorCourse='automation_courses')}" target="content-iFrm" >自动化</a></dd>
                                     </dl>
                                 </li>
                                 <li class="layui-nav-item layui-nav-itemed">
                                     <a class="" href="javascript:;" style="font-size: medium">班级信息</a>
-                                    <dl class="layui-nav-child">
-                                        <dd><a  :href="@{/courseOrder/list}" target="content-iFrm" >电信1601</a></dd>
-                                        <dd><a  :href="@{/courseOrder/list}" target="content-iFrm" >电信1602</a></dd>
-                                        <dd><a  :href="@{/courseOrder/list}" target="content-iFrm" >电气1601</a></dd>
-                                        <dd><a  :href="@{/courseOrder/list}" target="content-iFrm" >电气1602</a></dd>
-                                        <dd><a  :href="@{/courseOrder/list}" target="content-iFrm" >自动化1601</a></dd>
-                                        <dd><a  :href="@{/courseOrder/list}" target="content-iFrm" >自动化1602</a></dd>
+                                    <dl class="layui-nav-child" style="font-size: larger;margin-left: 15px">
+                                        <dd><a  th:href="@{/classInfo/list(className='电信1601')}" target="content-iFrm" >电信1601</a></dd>
+                                        <dd><a  th:href="@{/classInfo/list(className='电信1602')}" target="content-iFrm" >电信1602</a></dd>
+                                        <dd><a  th:href="@{/classInfo/list(className='电气1601')}" target="content-iFrm" >电气1601</a></dd>
+                                        <dd><a  th:href="@{/classInfo/list(className='电气1602')}" target="content-iFrm" >电气1602</a></dd>
+                                        <dd><a  th:href="@{/classInfo/list(className='自动化1601')}" target="content-iFrm" >自动化1601</a></dd>
+                                        <dd><a  th:href="@{/classInfo/list(className='自动化1602')}" target="content-iFrm" >自动化1602</a></dd>
                                     </dl>
                                 </li>
                             </ul>
@@ -132,7 +129,7 @@
 
     <div class="layui-footer">
         <!-- 底部固定区域 -->
-        buttom
+        @+buttom
     </div>
 </div>
 <script>

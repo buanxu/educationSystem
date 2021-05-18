@@ -1,6 +1,6 @@
 package com.buanxu.educationSystem.dao;
 
-import com.buanxu.educationSystem.entity.CourseOrder;
+import com.buanxu.educationSystem.entity.CourseTable;
 import com.buanxu.educationSystem.entity.PersonalInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -53,4 +53,18 @@ public interface ClassPersonalInfoDao {
      * @param personalInfo
      */
     public void update(PersonalInfo personalInfo);
+
+    /**
+     * 查询课表中有几门课
+     * @param className
+     * @return
+     */
+    public int findCountOfCourse(@Param("className") String className);
+
+    /**
+     * 查询课表
+     * @param params 封装了查询条件
+     * @return
+     */
+    public List<CourseTable> findPersonalCourse(Map<String,Object> params);
 }

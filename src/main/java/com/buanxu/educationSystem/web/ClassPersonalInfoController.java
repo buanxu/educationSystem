@@ -1,6 +1,7 @@
 package com.buanxu.educationSystem.web;
 
 import com.buanxu.educationSystem.entity.CRUDResult;
+import com.buanxu.educationSystem.entity.CourseTable;
 import com.buanxu.educationSystem.entity.PageResult;
 import com.buanxu.educationSystem.entity.PersonalInfo;
 import com.buanxu.educationSystem.service.IClassPersonalInfoService;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/personalinfo")
@@ -66,9 +69,25 @@ public class ClassPersonalInfoController {
         return "/classPersonalinfo/studentInfo";
     }
 
+    @RequestMapping("/personalCourse")
+    public String personalCourse(String className,Model model){
+        model.addAttribute("className", className);
+        return "/classPersonalinfo/personalCourse";
+    }
+    @RequestMapping("/personalCourseJson")
+    @ResponseBody
+    public PageResult<CourseTable> personalCourseJson(String className,int page, int limit){
+
+        PageResult<CourseTable> pageResult = classPersonalInfoService.findPersonalCourse(className,page,limit);
+        return pageResult;
+    }
+
     @RequestMapping("/listJson")
     @ResponseBody
     public PageResult<PersonalInfo> listJson(String classTable, PersonalInfo condition, int page, int limit){//layui传来的参数用来做分页
+        //condition模糊查询的条件
+        System.out.println("classTable："+classTable);
+        System.out.println("condition："+condition);
         PageResult<PersonalInfo> result=classPersonalInfoService.findPageResult(classTable, condition, page, limit);
         return result;
     }

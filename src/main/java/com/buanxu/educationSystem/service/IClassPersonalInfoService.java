@@ -1,9 +1,8 @@
 package com.buanxu.educationSystem.service;
 
-import com.buanxu.educationSystem.entity.CourseOrder;
+import com.buanxu.educationSystem.entity.CourseTable;
 import com.buanxu.educationSystem.entity.PageResult;
 import com.buanxu.educationSystem.entity.PersonalInfo;
-import org.apache.ibatis.annotations.Param;
 
 public interface IClassPersonalInfoService {
     public PageResult<PersonalInfo> findPageResult(String classTable,PersonalInfo condition, int page, int pageSize);
@@ -15,6 +14,8 @@ public interface IClassPersonalInfoService {
     public void  delete(String studentNumber,String classNumber);
 
     public void update(PersonalInfo personalInfo);
+
+    public PageResult<CourseTable> findPersonalCourse(String className,int page, int limit);
 
 
 

@@ -93,13 +93,12 @@
                     ,{field:'sex', title:'性别', width:60}
                     ,{field:'address', title:'地址', width:100}
                     ,{field:'birthday', title:'生日', width:180,}
-                    //,{field:'course', title:'个人课程', width:120}
                     ,{fixed: 'right', title:'课程', toolbar: '#course',width:150}
                     ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:140}
                 ]
             ]
             ,limit:9   //默认分页显示的记录数，该值必须已经在limits中定义了
-            ,limits:[8,9,10,11,12]  //设置多个分页选项，每页显示多少条记录，
+            ,limits:[9,10,11,12]  //设置多个分页选项，每页显示多少条记录，
             ,page: true   //开启分页
             ,id:'infoTable'  //渲染table时给表格绑定一个id，以便重新加载表格时使用
         });
@@ -157,13 +156,12 @@
             });
         });
 
-
-
         //工具条事件，即监听表格每一行最后的操作
         //obj封装了当前行的所有数据
         table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var name=obj.data.name;
             var studentNumber = obj.data.studentNumber; //获得当前行数据的id
-            let className = obj.data.className;
+            var className = obj.data.className;
             var layEvent = obj.event; //获得 lay-event 对应的事件类型（也可以是表头的 event 参数对应的值）
             if(layEvent === 'del'){ //删除
                 layer.confirm('确定删除 ？', function(index){
@@ -196,7 +194,19 @@
                     }
                 });
             }else if(layEvent === 'find_course'){//查看课程
-
+                parent.layer.open({
+                    type: 2,   //2跳转到页面
+                    offset: 'auto',
+                    title: name+'的课程安排',
+                    //查某人的课程的时候传参只需要传它的班级即可
+                    content: './personalinfo/personalCourse?className='+className,
+                    area: ['1100px', '600px'],
+                    btn: '关闭全部',
+                    btnAlign: 'c',
+                    yes: function () {
+                        parent.layer.closeAll();
+                    }
+                });
             }
         });
     });

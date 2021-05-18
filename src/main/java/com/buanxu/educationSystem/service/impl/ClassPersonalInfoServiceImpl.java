@@ -1,6 +1,7 @@
 package com.buanxu.educationSystem.service.impl;
 
 import com.buanxu.educationSystem.dao.ClassPersonalInfoDao;
+import com.buanxu.educationSystem.entity.CourseTable;
 import com.buanxu.educationSystem.entity.PageResult;
 import com.buanxu.educationSystem.entity.PersonalInfo;
 import com.buanxu.educationSystem.service.IClassPersonalInfoService;
@@ -66,6 +67,26 @@ public class ClassPersonalInfoServiceImpl implements IClassPersonalInfoService {
     @Override
     public void update(PersonalInfo personalInfo) {
         classPersonalInfoDao.update(personalInfo);
+    }
+
+    @Override
+    public PageResult<CourseTable> findPersonalCourse(String className,int page, int limit) {//查询课程表
+        Map<String,Object> params=new HashMap<String, Object>();
+        params.put("className",className);
+        params.put("startIndex",(page-1)*limit);
+        params.put("pageSize",limit);
+
+        PageResult<CourseTable> pageResult=new PageResult<CourseTable>();
+        //查询课表
+        List<CourseTable> personalCourse = classPersonalInfoDao.findPersonalCourse(params);
+        //查询课表中有几门课
+        int courseCount=classPersonalInfoDao.findCountOfCourse(className);
+
+        pageResult.setData(personalCourse);
+        pageResult.setCode(courseCount);
+        pageResult.setCode(0);
+
+        return pageResult;
     }
 
 

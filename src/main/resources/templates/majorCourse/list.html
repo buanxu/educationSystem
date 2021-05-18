@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+<span th:switch="${majorCourse}"><br/><br/>s
+    <p th:case="telecom_courses" th:align="center" style="font-size: xx-large">电子信息工程专业课程安排</p>
+    <p th:case="electrical_courses" th:align="center" style="font-size: xx-large">电气工程专业课程安排</p>
+    <p th:case="automation_courses" th:align="center" style="font-size: xx-large">自动化专业课程安排</p>
+    <br/>
+</span>
+
+<table class="layui-hide" id="test" lay-filter="test"></table>
+
+<!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
+<script>
+    var $,table;
+    layui.use('table', function(){
+        $=layui.jquery;
+        table = layui.table;
+
+        //温馨提示：默认由前端自动合计当前行数据。从 layui 2.5.6 开始： 若接口直接返回了合计行数据，则优先读取接口合计行数据。
+        //详见：https://www.layui.com/doc/modules/table.html#totalRow
+        table.render({
+            elem: '#test'
+            ,url:'../majorCourse/courseJson?majorCourse=[[${majorCourse}]]' //layui访问此接口时会向后台传参page、limit，这两个参数用来做分页
+            ,toolbar: '#toolbarDemo'
+            ,title: '用户数据表'
+            ,totalRow: true
+            ,cols: [
+                [
+                     {type: 'checkbox', fixed: 'left'}
+                    ,{field:'course_name', title:'课程名称', width:120}
+                    ,{field:'teacher', title:'任课教师', width:120}
+                    ,{field:'address', title:'上课地点', width:120}
+                    ,{field:'date', title:'上课时间', width:150}
+                    ,{field:'start_end', title:'课程周期', width:120}
+                    ,{field:'investigation_exam', title:'考核方式', width:120}
+                ]
+            ]
+            ,limit:8   //默认分页显示的记录数，该值必须已经在limits中定义了
+            ,limits:[8,9,10,15]
+            ,page: true   //开启分页
+        });
+    });
+    
+</script>
+
+</body>
+</html>

@@ -32,6 +32,15 @@
         </choose>
     </sql>
 
+    <!--根据专业查找相应的课表-->
+    <sql id="course_table">
+        <choose>
+            <when test="className=='电信1601' or className=='电信1602'">telecom_courses</when>
+            <when test="className=='电气1601' or className=='电气1602'">electrical_courses</when>
+            <when test="className=='自动化1601' or className=='自动化1602'">automation_courses</when>
+        </choose>
+    </sql>
+
     <!--模糊查询的条件-->
     <sql id="find_condition">
         <where>
@@ -80,5 +89,14 @@
         where studentNumber=#{studentNumber}
 
     </update>
+
+    <select id="findPersonalCourse" parameterType="Map" resultType="CourseTable">
+        select * from <include refid="course_table"></include>
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="findCountOfCourse" parameterType="String" resultType="int">
+        select count(course_name) from <include refid="course_table"></include>
+    </select>
 
 </mapper>
