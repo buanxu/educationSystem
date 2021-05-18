@@ -51,4 +51,22 @@ public class ClassPersonalInfoServiceImpl implements IClassPersonalInfoService {
     public PersonalInfo findByStudentNumber(String studentNumber, String className) {
         return classPersonalInfoDao.findByStudentNumber(studentNumber,className);
     }
+
+    @Override
+    public void delete(String studentNumber, String classNumber) {
+        //把删除学生所需要的班级和学号信息封装在map里
+        /*Map<String,Object> params=new HashMap<String, Object>();
+        params.put("studentNumber",studentNumber);
+        params.put("classNumber",classNumber);
+        classPersonalInfoDao.delete(params);*/
+
+        classPersonalInfoDao.delete(studentNumber, classNumber);
+    }
+
+    @Override
+    public void update(PersonalInfo personalInfo) {
+        classPersonalInfoDao.update(personalInfo);
+    }
+
+
 }

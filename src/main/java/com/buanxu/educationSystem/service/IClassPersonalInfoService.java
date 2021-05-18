@@ -12,6 +12,11 @@ public interface IClassPersonalInfoService {
 
     public PersonalInfo findByStudentNumber(String studentNumber, String className);
 
+    public void  delete(String studentNumber,String classNumber);
+
+    public void update(PersonalInfo personalInfo);
+
+
 
 
     /*public void save(CourseOrder courseOrder);

@@ -18,6 +18,7 @@
             <label class="layui-form-label">学号</label>
             <div class="layui-input-inline">
                 <input type="text" name="studentNumber" th:value="${studentInfo.studentNumber}" readonly="readonly" lay-verify="required" autocomplete="off" class="layui-input">
+                <span style="color: red">*学号不可修改</span>
             </div>
         </div>
         <div class="layui-inline">
@@ -53,34 +54,81 @@
             </div>
         </div>
     </div>
-
     <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label">班级</label>
             <div class="layui-input-inline">
-                <input type="text" name="className" th:value="${studentInfo.className}" id="className" lay-verify="required"  autocomplete="off" class="layui-input">
+                <select name="className" id="className" lay-verify="required" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="电信1601">电信1601</option>
+                    <option value="电信1602">电信1602</option>
+                    <option value="电气1601">电气1601</option>
+                    <option value="电气1602">电气1602</option>
+                    <option value="自动化1601">自动化1601</option>
+                    <option value="自动化1602">自动化1602</option>
+                </select>
             </div>
         </div>
         <div class="layui-inline">
             <label class="layui-form-label">生日</label>
             <div class="layui-input-inline">
-                <input type="text" name="birthday" th:value="${#dates.format(studentInfo.birthday,'yyyy-MM-dd')}" id="birthday" lay-verify="required" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <input type="text" name="birthday"  id="birthday" th:value="${#dates.format(studentInfo.birthday,'yyyy-MM-dd')}" lay-verify="required"   autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <div class="layui-input-inline">
+                <input type="hidden" name="id" th:value="${studentInfo.id}" readonly="readonly" lay-verify="required"  autocomplete="off" class="layui-input">
             </div>
         </div>
     </div>
 
+    <br/>
+    <div class="layui-form-item">
+        <div class="layui-input-block" style="margin-left: 400px">
+            <br/>
+            <button type="button" onclick="doSave();" lay-submit="" class="layui-btn"  lay-filter="demo1" style="margin-left: 100px">提交修改</button>
+        </div>
+    </div>
 </form >
 
 <!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
-<script>
+<script th:inline="javascript">
     var $;
     var layer;
 
-    //加载表单模块
-    layui.use(['form'], function(){
+    //加载表单、laydate模块
+    layui.use(['form','laydate','jquery'], function(){
         layer=layui.layer;
+        $=layui.jquery;
+        var laydate = layui.laydate;
+        laydate.render({  //渲染指定标签
+            elem: '#birthday'
+        });
+
+        var className=[[${studentInfo.className}]];
+        var select = 'dd[lay-value=' + className + ']';  //获取自动选中的内容
+        $('#className').siblings("div.layui-form-select").find('dl').find(select).click();// 触发点击事件，实现自动选择
     });
 
+    function doSave() {
+        var requestData=$("#form1").serialize();
+        // alert(requestData)
+        //发送post请求
+        //  语法：$.post(url,data,callback,type);
+        //   url(必须):发送请求的地址，String类型
+        //   data(可选):发送给后台的数据，以key/value形式{a:value1,b:value2}，即json格式
+        //  callback(可选):请求成功后的回调函数。因此，在后台的处理中，需要给JSONObject put一个是否成功的值，见下面例子。
+        //   type(可选):即第二个参数data的数据类型。如果有data传递给后台，则需要加上该类型。
+        $.post("../personalinfo/save",requestData,function (requestData) {
+            if (requestData.success==1){
+                layer.alert("修改成功",{yes:function () {
+                        parent.layer.closeAll();
+                    }});
+            }else {
+
+            }
+        });
+    }
 </script>
 
 </body>

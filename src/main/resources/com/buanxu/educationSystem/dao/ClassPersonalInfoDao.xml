@@ -19,7 +19,8 @@
         values(#{className},#{studentNumber},#{name},#{phone},#{age},#{sex},#{address},#{birthday})
     </insert>-->
 
-    <sql id="className">
+    <!--根据传过来的参数确定对哪张表格进行增删改-->
+    <sql id="class_name">
         <choose>
             <when test="className=='电信1601'">telecom1601_personalinfo</when>
             <when test="className=='电信1602'">telecom1602_personalinfo</when>
@@ -31,23 +32,53 @@
         </choose>
     </sql>
 
+    <!--模糊查询的条件-->
+    <sql id="find_condition">
+        <where>
+            <if test="condition.studentNumber!=null and condition.studentNumber!='' ">
+                studentNumber like '%${condition.studentNumber}%'
+            </if>
+            <if test="condition.name!=null and condition.name!='' ">
+                and name like '%${condition.name}%'
+            </if>
+            <if test="condition.phone!=null and condition.phone!='' ">
+                and phone like '%${condition.phone}%'
+            </if>
+        </where>
+    </sql>
+
     <select id="findCountByMap" resultType="int" parameterType="Map">
         select count(name) from ${classTable}
+        <include refid="find_condition"></include>
     </select>
 
     <select id="finListByMap" parameterType="Map" resultType="PersonalInfo">
         select * from ${classTable}
+        <include refid="find_condition"></include>
         limit #{startIndex},#{pageSize}
     </select>
 
     <insert id="save" parameterType="PersonalInfo">
-        insert into <include refid="className"></include>
-        (className,studentNumber,name,phone,age,sex,address,birthday)
-        values(#{className},#{studentNumber},#{name},#{phone},#{age},#{sex},#{address},#{birthday})
+        insert into <include refid="class_name"></include>
+        (className,studentNumber,name,phone,age,sex,address,birthday,course)
+        values(#{className},#{studentNumber},#{name},#{phone},#{age},#{sex},#{address},#{birthday},#{course})
     </insert>
 
     <select id="findByStudentNumber" resultType="PersonalInfo">
-        select * from <include refid="className"></include>
+        select * from <include refid="class_name"></include>
+        where studentNumber=#{studentNumber}
     </select>
+
+    <delete id="delete" parameterType="Map">
+        delete from <include refid="class_name"></include>
+        where studentNumber=#{studentNumber}
+    </delete>
+    
+    <update id="update" parameterType="PersonalInfo">
+        update <include refid="class_name"></include>
+        set className=#{className},name=#{name },phone=#{phone},age=#{age},sex=#{sex},address=#{address},birthday=#{birthday},course=#{course}
+        where studentNumber=#{studentNumber}
+
+    </update>
 
 </mapper>

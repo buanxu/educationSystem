@@ -39,4 +39,18 @@ public interface ClassPersonalInfoDao {
      * @return
      */
     public PersonalInfo findByStudentNumber(@Param("studentNumber") String studentNumber,@Param("className") String className);
+
+    /**
+     *把删除学生所需要的班级和学号信息封装在map里
+     * 删除一条记录
+     * @param
+     */
+    //public void delete(Map<String,Object> params);
+    public void delete(@Param("studentNumber") String studentNumber,@Param("className") String className);
+
+    /**
+     * 修改学生信息
+     * @param personalInfo
+     */
+    public void update(PersonalInfo personalInfo);
 }
