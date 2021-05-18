@@ -3,25 +3,51 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.buanxu.educationSystem.dao.ClassPersonalInfoDao">
-    <sql id="classTable">
+    <!--<sql id="className">
         <where>
-            <if test="classTable==telecom1601_personalinfo">telecom1601_personalinfo</if>
-            <if test="classTable==telecom1602_personalinfo">telecom1602_personalinfo</if>
-            <if test="classTable==electrical1601_personalinfo">electrical1601_personalinfo</if>
-            <if test="classTable==electrical1602_personalinfo">electrical1602_personalinfo</if>
-            <if test="classTable==automation1601_personalinfo">automation1601_personalinfo</if>
-            <if test="classTable==automation1602_personalinfo">automation1602_personalinfo</if>
+            <if test="className=='电信1601' ">
+                 telecom1601_personalinfo
+            </if>
+            <if test="className=='电信1602' ">
+                 telecom1602_personalinfo
+            </if>
         </where>
     </sql>
+    <insert id="save" parameterType="PersonalInfo">
+        insert into <include refid="className"></include>
+        (className,studentNumber,name,phone,age,sex,address,birthday)
+        values(#{className},#{studentNumber},#{name},#{phone},#{age},#{sex},#{address},#{birthday})
+    </insert>-->
 
+    <sql id="className">
+        <choose>
+            <when test="className=='电信1601'">telecom1601_personalinfo</when>
+            <when test="className=='电信1602'">telecom1602_personalinfo</when>
+            <when test="className=='电气1601'">electrical1601_personalinfo</when>
+            <when test="className=='电气1602'">electrical1602_personalinfo</when>
+            <when test="className=='自动化1601'">automation1601_personalinfo</when>
+            <when test="className=='自动化1602'">automation1602_personalinfo</when>
+
+        </choose>
+    </sql>
 
     <select id="findCountByMap" resultType="int" parameterType="Map">
-        select count(name) from <include refid="classTable"></include>
+        select count(name) from ${classTable}
     </select>
 
     <select id="finListByMap" parameterType="Map" resultType="PersonalInfo">
-        select * from <include refid="classTable"></include>
+        select * from ${classTable}
         limit #{startIndex},#{pageSize}
+    </select>
+
+    <insert id="save" parameterType="PersonalInfo">
+        insert into <include refid="className"></include>
+        (className,studentNumber,name,phone,age,sex,address,birthday)
+        values(#{className},#{studentNumber},#{name},#{phone},#{age},#{sex},#{address},#{birthday})
+    </insert>
+
+    <select id="findByStudentNumber" resultType="PersonalInfo">
+        select * from <include refid="className"></include>
     </select>
 
 </mapper>

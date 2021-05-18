@@ -41,4 +41,14 @@ public class ClassPersonalInfoServiceImpl implements IClassPersonalInfoService {
 
         return result;
     }
+
+    @Override
+    public void save(PersonalInfo personalInfo) {
+        classPersonalInfoDao.save(personalInfo);
+    }
+
+    @Override
+    public PersonalInfo findByStudentNumber(String studentNumber, String className) {
+        return classPersonalInfoDao.findByStudentNumber(studentNumber,className);
+    }
 }

@@ -1,5 +1,6 @@
 package com.buanxu.educationSystem.web;
 
+import com.buanxu.educationSystem.entity.CRUDResult;
 import com.buanxu.educationSystem.entity.CourseOrder;
 import com.buanxu.educationSystem.entity.PageResult;
 import com.buanxu.educationSystem.entity.PersonalInfo;
@@ -24,6 +25,28 @@ public class ClassPersonalInfoController {
         return "/classPersonalinfo/list";
     }
 
+    @RequestMapping("/add")
+    public String add(){
+        return "/classPersonalinfo/add";
+    }
+
+    @RequestMapping("/save")
+    @ResponseBody
+    public CRUDResult save(PersonalInfo studentInfo){
+        CRUDResult crudResult=new CRUDResult();
+        classPersonalInfoService.save(studentInfo);
+
+        return crudResult;
+    }
+
+
+    @RequestMapping("/detail")
+    public String detail(String studentNumber,String className,Model model){//查询某一学生的信息
+        PersonalInfo studentInfo = classPersonalInfoService.findByStudentNumber(studentNumber, className);
+        model.addAttribute("studentInfo",studentInfo);
+        return "/classPersonalinfo/studentInfo";
+    }
+
     @RequestMapping("/listJson")
     @ResponseBody
     public PageResult<PersonalInfo> listJson(String classTable, PersonalInfo condition, int page, int limit){//layui传来的参数用来做分页
@@ -32,6 +55,7 @@ public class ClassPersonalInfoController {
         System.out.println(condition);
         System.out.println("classTable："+classTable);
         PageResult<PersonalInfo> result=classPersonalInfoService.findPageResult(classTable, condition, page, limit);
+        System.out.println(result.getData().get(0));
 
         return result;
     }

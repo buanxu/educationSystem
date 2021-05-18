@@ -3,9 +3,16 @@ package com.buanxu.educationSystem.service;
 import com.buanxu.educationSystem.entity.CourseOrder;
 import com.buanxu.educationSystem.entity.PageResult;
 import com.buanxu.educationSystem.entity.PersonalInfo;
+import org.apache.ibatis.annotations.Param;
 
 public interface IClassPersonalInfoService {
     public PageResult<PersonalInfo> findPageResult(String classTable,PersonalInfo condition, int page, int pageSize);
+
+    public void save(PersonalInfo personalInfo);
+
+    public PersonalInfo findByStudentNumber(String studentNumber, String className);
+
+
 
     /*public void save(CourseOrder courseOrder);
 

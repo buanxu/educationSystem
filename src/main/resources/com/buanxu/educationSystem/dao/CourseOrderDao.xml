@@ -4,6 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.buanxu.educationSystem.dao.CourseOrderDao">
 
+    <!--<sql id="className">
+        <where>
+            <if test="className=='电信1601' ">
+                telecom1601_personalinfo
+            </if>
+            <if test="className=='电信1602' ">
+                telecom1602_personalinfo
+            </if>
+        </where>
+    </sql>
+    <insert id="save" parameterType="PersonalInfo">
+        insert into <include refid="className"></include>
+        (className,studentNumber,name,phone,age,sex,address,birthday)
+        values(#{className},#{studentNumber},#{name},#{phone},#{age},#{sex},#{address},#{birthday})
+    </insert>-->
+
+
     <sql id="search_where">
         <where>
             <if test="condition.wechat_no !=null and condition.wechat_no !='' ">

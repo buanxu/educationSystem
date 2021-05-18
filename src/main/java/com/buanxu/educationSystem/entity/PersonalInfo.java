@@ -1,40 +1,25 @@
 package com.buanxu.educationSystem.entity;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class PersonalInfo implements Serializable {
     private int id;
     private String studentNumber;
+    private String className;
     private String name;
     private String phone;
     private String age;
     private String sex;
     private String address;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private String course="个人课程";
 
     public PersonalInfo() {
-    }
-
-    public PersonalInfo(int id, String studentNumber, String name, String phone, String age, String sex, String address, Date birthday) {
-        this.id = id;
-        this.studentNumber = studentNumber;
-        this.name = name;
-        this.phone = phone;
-        this.age = age;
-        this.sex = sex;
-        this.address = address;
-        this.birthday = birthday;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getStudentNumber() {
@@ -45,20 +30,20 @@ public class PersonalInfo implements Serializable {
         this.studentNumber = studentNumber;
     }
 
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
     }
 
     public String getPhone() {
@@ -93,12 +78,20 @@ public class PersonalInfo implements Serializable {
         this.address = address;
     }
 
-    public Date getDate() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setDate(Date birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getCourse() {
+        return course;
     }
 
     @Override
@@ -106,6 +99,7 @@ public class PersonalInfo implements Serializable {
         return "PersonalInfo{" +
                 "id=" + id +
                 ", studentNumber='" + studentNumber + '\'' +
+                ", className='" + className + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", age='" + age + '\'' +

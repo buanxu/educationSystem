@@ -3,6 +3,7 @@ package com.buanxu.educationSystem.dao;
 import com.buanxu.educationSystem.entity.CourseOrder;
 import com.buanxu.educationSystem.entity.PersonalInfo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,4 +25,18 @@ public interface ClassPersonalInfoDao {
      * @return
      */
     public List<PersonalInfo> finListByMap(Map<String,Object> map);
+
+    /**
+     * 保存信息
+     * @param personalInfo
+     */
+    public void save(PersonalInfo personalInfo);
+
+    /**
+     * 通过学号查询学生信息,且必须有班级
+     * @param studentNumber
+     * @param className
+     * @return
+     */
+    public PersonalInfo findByStudentNumber(@Param("studentNumber") String studentNumber,@Param("className") String className);
 }

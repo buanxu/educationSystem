@@ -12,8 +12,16 @@
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body>
-<br/>
-<form action="" id="searchForm" class="layui-form">
+    <span th:switch="${classTable}">
+        <span th:case="telecom1601_personalinfo" th:align="center"><p style="font-size: xx-large">电信1601学生信息</p></span>
+        <span th:case="telecom1602_personalinfo" th:align="center"><p style="font-size: xx-large">电信1602学生信息</p></span>
+        <span th:case="electrical1601_personalinfo" th:align="center"><p style="font-size: xx-large">电气1601学生信息</p></span>
+        <span th:case="electrical1602_personalinfo" th:align="center"><p style="font-size: xx-large">电气1602学生信息</p></span>
+        <span th:case="automation1601_personalinfo" th:align="center"><p style="font-size: xx-large">自动化1601学生信息</p></span>
+        <span th:case="automation1602_personalinfo" th:align="center"><p style="font-size: xx-large">自动化1602学生信息</p></span>
+        <br/><br/>
+    </span>
+<form action="" id="searchForm" class="layui-form" >
     <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label">学号</label>
@@ -74,19 +82,20 @@
             ,cols: [
                 [
                      {type: 'checkbox', fixed: 'left'}
-                    ,{field:'studentNumber', title:'学号', width:120}
-                    ,{field:'name', title:'姓名', width:120}
+                    ,{field:'className', title:'班级', width:120}
+                    ,{field:'studentNumber', title:'学号', width:140}
+                    ,{field:'name', title:'姓名', width:100}
                     ,{field:'phone', title:'电话', width:120}
-                    ,{field:'age', title:'年龄', width:120}
-                    ,{field:'sex', title:'性别', width:120}
+                    ,{field:'age', title:'年龄', width:60}
+                    ,{field:'sex', title:'性别', width:60}
                     ,{field:'address', title:'地址', width:120}
-                    ,{field:'birthday', title:'生日', width:120}
+                    ,{field:'birthday', title:'生日', width:180,}
                     ,{field:'course', title:'个人课程', width:120}
                     ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
                 ]
             ]
-            ,limit:8   //默认分页显示的记录数，该值必须已经在limits中定义了
-            ,limits:[10,11,12]  //设置多个分页选项，每页显示多少条记录，
+            ,limit:9   //默认分页显示的记录数，该值必须已经在limits中定义了
+            ,limits:[8,9,10,11,12]  //设置多个分页选项，每页显示多少条记录，
             ,page: true   //开启分页
             ,id:'infoTable'  //渲染table时给表格绑定一个id
         });
@@ -111,8 +120,8 @@
                     parent.layer.open({
                         type: 2,   //2跳转到页面
                         offset:'auto',
-                        title:'添加课程订单',
-                        content:'./courseOrder/add',
+                        title:'添加学生信息',
+                        content:'./personalinfo/add',
                         area:['1100px','600px'],
                         btn:'关闭全部',
                         btnAlign:'c',
@@ -124,14 +133,15 @@
             };
         });
 
-        //触发行双击事件，即监听表格的双击事件
+        //触发行双击事件，即监听表格的双击事件，并把当前这一行的数据封装成obj
         table.on('rowDouble(test)', function(obj){
-            var orderId=obj.data.order_id;
+            var studentNumber=obj.data.studentNumber;
+            var className=obj.data.className;
             parent.layer.open({
                 type: 2,   //2跳转到页面
                 offset:'auto',
                 title:'添加课程订单',
-                content:'./courseOrder/detail?order_id='+orderId,
+                content:'./personalinfo/detail?studentNumber='+studentNumber+"&className="+className,
                 area:['1100px','600px'],
                 btn:'关闭全部',
                 btnAlign:'c',

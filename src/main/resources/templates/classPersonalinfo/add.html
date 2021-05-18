@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}"  media="all">
+    <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+<br/>
+<form id="form1" class="layui-form" action="">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">学号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="studentNumber" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="name" id="name" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">电话</label>
+            <div class="layui-input-inline">
+                <input type="text" name="phone" id="phone" lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">年龄</label>
+            <div class="layui-input-inline">
+                <input type="text" name="age" id="age" lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-inline">
+                <input type="text" name="sex" id="sex" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">籍贯</label>
+            <div class="layui-input-inline">
+                <input type="text" name="address" id="address" lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">班级</label>
+            <div class="layui-input-inline">
+                <select name="className" lay-verify="required" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="电信1601">电信1601</option>
+                    <option value="电信1602">电信1602</option>
+                    <option value="电气1601">电气1601</option>
+                    <option value="电气1602">电气1602</option>
+                    <option value="自动化1601">自动化1601</option>
+                    <option value="自动化1602">自动化1602</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-inline">
+            <label class="layui-form-label">生日</label>
+            <div class="layui-input-inline">
+                <input type="text" name="birthday" id="birthday" lay-verify="required" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <div class="layui-input-inline">
+                <input type="hidden" name="course" th:value="个人课程" lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="layui-form-item"><br/>
+        <div class="layui-input-block" style="margin-left: 70px">
+            <button type="button" onclick="doSave();" lay-submit="" class="layui-btn"  lay-filter="demo1">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form >
+
+<!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
+<script>
+    var $;
+    var layer;
+
+    //加载表单、laydate模块
+    layui.use(['form', 'laydate','jquery'], function(){
+        $=layui.jquery;  //获取layui内置的jquery
+        layer=layui.layer;
+        var laydate = layui.laydate;
+        laydate.render({  //渲染指定标签
+            elem: '#birthday'
+        });
+    });
+
+    function doSave() {
+        var requestData=$("#form1").serialize();
+        // alert(requestData)
+        //发送post请求
+        //  语法：$.post(url,data,callback,type);
+        //   url(必须):发送请求的地址，String类型
+        //   data(可选):发送给后台的数据，以key/value形式{a:value1,b:value2}，即json格式
+        //  callback(可选):请求成功后的回调函数。因此，在后台的处理中，需要给JSONObject put一个是否成功的值，见下面例子。
+        //   type(可选):即第二个参数data的数据类型。如果有data传递给后台，则需要加上该类型。
+        $.post("../personalinfo/save",requestData,function (requestData) {
+            if (requestData.success==1){
+                layer.alert("添加成功",{yes:function () {
+                        parent.layer.closeAll();
+                    }});
+            }else {
+
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
