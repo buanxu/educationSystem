@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @RequestMapping("/majorCourse")
 @Controller
 public class MajorCourseController {
@@ -17,19 +19,17 @@ public class MajorCourseController {
     private MajorCourseServiceImpl majorCourseService;
 
     @RequestMapping("/list")
-    public String list(String majorCourse, Model model){
-        model.addAttribute("majorCourse",majorCourse);
+    public String list(String majorCourse, Model model) {
+        model.addAttribute("majorCourse", majorCourse);
 
         return "/majorCourse/list";
     }
 
     @RequestMapping("/courseJson")
     @ResponseBody
-    public PageResult<CourseTable> courseJson(String majorCourse){
-        PageResult<CourseTable> pageResult=new PageResult<CourseTable>();
-        pageResult=majorCourseService.findMajorCourse(majorCourse);
-
+    public PageResult<CourseTable> courseJson(String majorCourse) {
+        PageResult<CourseTable> pageResult = new PageResult<CourseTable>();
+        pageResult = majorCourseService.findMajorCourse(majorCourse);
         return pageResult;
     }
-
 }

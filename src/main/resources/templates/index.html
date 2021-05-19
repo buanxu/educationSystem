@@ -73,49 +73,60 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test" >
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;" style="font-size: larger;margin-left: 0px" >常用功能</a>
-                    <dl class="layui-nav-child" style="font-size: larger;margin-left: 15px">
+                    <dl class="layui-nav-child">
                         <dd>
                             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                                <li class="layui-nav-item layui-nav-itemed">
-                                    <a class="" href="javascript:;" style="font-size: medium">班级个人信息</a>
-                                    <dl class="layui-nav-child" style="font-size: larger;margin-left: 15px">
-                                        <dd><a  th:href="@{/personalinfo/list(classTable='telecom1601_personalinfo')}" target="content-iFrm" >电信1601</a></dd>
-                                        <dd><a  th:href="@{/personalinfo/list(classTable='telecom1602_personalinfo')}" target="content-iFrm" >电信1602</a></dd>
-                                        <dd><a  th:href="@{/personalinfo/list(classTable='electrical1601_personalinfo')}" target="content-iFrm" >电气1601</a></dd>
-                                        <dd><a  th:href="@{/personalinfo/list(classTable='electrical1602_personalinfo')}" target="content-iFrm" >电气1602</a></dd>
-                                        <dd><a  th:href="@{/personalinfo/list(classTable='automation1601_personalinfo')}" target="content-iFrm" >自动化1601</a></dd>
-                                        <dd><a  th:href="@{/personalinfo/list(classTable='automation1602_personalinfo')}" target="content-iFrm" >自动化1602</a></dd>
+                                <li class="layui-nav-item layui-nav-itemed" >
+                                    <a class="" href="javascript:;" style="font-size: medium;font-size: larger;margin-left: 15px">班级个人信息</a>
+                                    <dl class="layui-nav-child" >
+                                        <dd><a  th:href="@{/personalinfo/list(classTable='telecom1601_personalinfo')}" target="content-iFrm" style="margin-left: 30px">电信1601</a></dd>
+                                        <dd><a  th:href="@{/personalinfo/list(classTable='telecom1602_personalinfo')}" target="content-iFrm" style="margin-left: 30px">电信1602</a></dd>
+                                        <dd><a  th:href="@{/personalinfo/list(classTable='electrical1601_personalinfo')}" target="content-iFrm" style="margin-left: 30px">电气1601</a></dd>
+                                        <dd><a  th:href="@{/personalinfo/list(classTable='electrical1602_personalinfo')}" target="content-iFrm" style="margin-left: 30px">电气1602</a></dd>
+                                        <dd><a  th:href="@{/personalinfo/list(classTable='automation1601_personalinfo')}" target="content-iFrm" style="margin-left: 30px">自动化1601</a></dd>
+                                        <dd><a  th:href="@{/personalinfo/list(classTable='automation1602_personalinfo')}" target="content-iFrm" style="margin-left: 30px">自动化1602</a></dd>
                                     </dl>
                                 </li>
                                 <li class="layui-nav-item layui-nav-itemed">
-                                    <a class="" href="javascript:;" style="font-size: medium">专业课程管理</a>
-                                    <dl class="layui-nav-child" style="font-size: larger;margin-left: 15px">
-                                        <dd><a  th:href="@{/majorCourse/list(majorCourse='telecom_courses')}" target="content-iFrm" >电子信息工程</a></dd>
-                                        <dd><a  th:href="@{/majorCourse/list(majorCourse='electrical_courses')}" target="content-iFrm" >电气工程</a></dd>
-                                        <dd><a  th:href="@{/majorCourse/list(majorCourse='automation_courses')}" target="content-iFrm" >自动化</a></dd>
+                                    <a class="" href="javascript:;" style="font-size: medium;font-size: larger;margin-left: 15px">专业课程管理</a>
+                                    <dl class="layui-nav-child">
+                                        <dd><a  th:href="@{/majorCourse/list(majorCourse='telecom_courses')}" target="content-iFrm" style="margin-left: 30px">电子信息工程</a></dd>
+                                        <dd><a  th:href="@{/majorCourse/list(majorCourse='electrical_courses')}" target="content-iFrm" style="margin-left: 30px">电气工程</a></dd>
+                                        <dd><a  th:href="@{/majorCourse/list(majorCourse='automation_courses')}" target="content-iFrm" style="margin-left: 30px">自动化</a></dd>
                                     </dl>
                                 </li>
                                 <li class="layui-nav-item layui-nav-itemed">
-                                    <a class="" href="javascript:;" style="font-size: medium">班级信息</a>
-                                    <dl class="layui-nav-child" style="font-size: larger;margin-left: 15px">
-                                        <dd><a  th:href="@{/classInfo/list(className='电信1601')}" target="content-iFrm" >电信1601</a></dd>
-                                        <dd><a  th:href="@{/classInfo/list(className='电信1602')}" target="content-iFrm" >电信1602</a></dd>
-                                        <dd><a  th:href="@{/classInfo/list(className='电气1601')}" target="content-iFrm" >电气1601</a></dd>
-                                        <dd><a  th:href="@{/classInfo/list(className='电气1602')}" target="content-iFrm" >电气1602</a></dd>
-                                        <dd><a  th:href="@{/classInfo/list(className='自动化1601')}" target="content-iFrm" >自动化1601</a></dd>
-                                        <dd><a  th:href="@{/classInfo/list(className='自动化1602')}" target="content-iFrm" >自动化1602</a></dd>
+                                    <a class="" href="javascript:;" style="font-size: medium;font-size: larger;margin-left: 15px">班级信息</a>
+                                    <dl class="layui-nav-child">
+                                        <dd><a  th:href="@{/classInfo/list(className='电信1601')}" target="content-iFrm" style="margin-left: 30px">电信1601</a></dd>
+                                        <dd><a  th:href="@{/classInfo/list(className='电信1602')}" target="content-iFrm" style="margin-left: 30px">电信1602</a></dd>
+                                        <dd><a  th:href="@{/classInfo/list(className='电气1601')}" target="content-iFrm" style="margin-left: 30px">电气1601</a></dd>
+                                        <dd><a  th:href="@{/classInfo/list(className='电气1602')}" target="content-iFrm" style="margin-left: 30px">电气1602</a></dd>
+                                        <dd><a  th:href="@{/classInfo/list(className='自动化1601')}" target="content-iFrm" style="margin-left: 30px">自动化1601</a></dd>
+                                        <dd><a  th:href="@{/classInfo/list(className='自动化1602')}" target="content-iFrm" style="margin-left: 30px">自动化1602</a></dd>
                                     </dl>
                                 </li>
                             </ul>
                         </dd>
                     </dl>
                 </li>
-
-                <li class="layui-nav-item"><a href="javascript:;">发布计划</a></li>
-                <li class="layui-nav-item"><a href="">点点滴滴</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" style="font-size: larger;margin-left: 0px" >数据分析</a>
+                    <dl class="layui-nav-child">
+                        <dd><a  th:href="@{/analysis/index(condition='地区分布')}" target="content-iFrm" style="margin-left: 15px">地区分布</a></dd>
+                        <dd><a  th:href="@{/analysis/index(condition='班级人数统计')}" target="content-iFrm" style="margin-left: 15px">班级人数统计</a></dd>
+                        <dd><a  th:href="@{/analysis/index(condition='性别统计')}" target="content-iFrm" style="margin-left: 15px">性别统计</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" style="font-size: larger;margin-left: 0px" >发布计划</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" style="font-size: larger;margin-left: 0px" >点点滴滴</a>
+                </li>
             </ul>
         </div>
     </div>

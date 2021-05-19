@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buanxu.educationSystem.dao.DataAnalysisDao">
+
+    <select id="findClassStudentNumber"  resultType="ClassStudentNumber">
+        SELECT result.className,COUNT(result.name) number FROM
+        (  	SELECT * FROM telecom1601_personalinfo
+            UNION ALL
+            SELECT * FROM telecom1602_personalinfo
+            UNION ALL
+            SELECT * FROM electrical1601_personalinfo
+            UNION ALL
+            SELECT * FROM electrical1602_personalinfo
+            UNION ALL
+            SELECT * FROM automation1601_personalinfo
+            UNION ALL
+            SELECT * FROM automation1602_personalinfo
+        ) AS result  GROUP BY className
+
+    </select>
+
+    <select id="findAreaStatistic" resultType="AreaStatistic">
+        SELECT LEFT(result.address,2) area,COUNT(result.name) number FROM
+        (  	SELECT * FROM telecom1601_personalinfo
+            UNION ALL
+            SELECT * FROM telecom1602_personalinfo
+            UNION ALL
+            SELECT * FROM electrical1601_personalinfo
+            UNION ALL
+            SELECT * FROM electrical1602_personalinfo
+            UNION ALL
+            SELECT * FROM automation1601_personalinfo
+            UNION ALL
+            SELECT * FROM automation1602_personalinfo
+        ) AS result  GROUP BY area
+    </select>
+
+    <select id="findSexStatistic" resultType="SexStatistic">
+        SELECT result.sex ,COUNT(result.name) number FROM
+        (  	SELECT * FROM telecom1601_personalinfo
+            UNION ALL
+            SELECT * FROM telecom1602_personalinfo
+            UNION ALL
+            SELECT * FROM electrical1601_personalinfo
+            UNION ALL
+            SELECT * FROM electrical1602_personalinfo
+            UNION ALL
+            SELECT * FROM automation1601_personalinfo
+            UNION ALL
+            SELECT * FROM automation1602_personalinfo
+        ) AS result  GROUP BY sex
+    </select>
+
+</mapper>
