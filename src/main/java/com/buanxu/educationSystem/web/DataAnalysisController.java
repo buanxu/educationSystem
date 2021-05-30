@@ -22,13 +22,13 @@ public class DataAnalysisController {
     public String index(String condition){
         switch(condition){
             case "地区分布":
-                return "/dataAnalysis/areaStatistic";
+                return "dataAnalysis/areaStatistic";
             case "班级人数统计":
-                return "/dataAnalysis/classStudentNumber";
+                return "dataAnalysis/classStudentNumber";
             case "性别统计":
-                return "/dataAnalysis/sexStatistics";
+                return "dataAnalysis/sexStatistics";
         }
-        return "/dataAnalysis/error";
+        return "dataAnalysis/error";
     }
 
     @RequestMapping("/classStudentNumber")

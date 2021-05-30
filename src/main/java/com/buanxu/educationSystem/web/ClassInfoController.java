@@ -21,7 +21,7 @@ public class ClassInfoController {
     public String list(String className, Model model){
         model.addAttribute("className",className);
 
-        return "/classInfo/list";
+        return "classInfo/list";
     }
 
     @RequestMapping("/courseInfoJson")
@@ -29,6 +29,7 @@ public class ClassInfoController {
     public PageResult<ClassInfo> courseInfoJson(String className){
         PageResult<ClassInfo> pageResult=new PageResult<ClassInfo>();
         pageResult=classInfoService.findClassInfo(className);
+        System.out.println(pageResult);
 
         return pageResult;
     }

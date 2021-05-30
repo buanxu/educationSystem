@@ -40,4 +40,14 @@ public class PageResult<T> implements Serializable {
     public void setData(List<T> data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "PageResult{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", count=" + count +
+                ", data=" + data +
+                '}';
+    }
 }

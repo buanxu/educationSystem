@@ -23,6 +23,8 @@ public class ClassInfoServiceImpl implements IClassInfoService {
         PageResult<ClassInfo> pageResult=new PageResult<ClassInfo>();
 
         List<ClassInfo> classInfo = classInfoDao.findClassInfo(className);
+        System.out.println(classInfo);
+
         pageResult.setData(classInfo);
         pageResult.setCount(1);
         pageResult.setCode(0);

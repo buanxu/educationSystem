@@ -8,8 +8,10 @@ import com.buanxu.educationSystem.service.IClassPersonalInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -20,14 +22,15 @@ public class ClassPersonalInfoController {
     private IClassPersonalInfoService classPersonalInfoService;
 
     @RequestMapping("list")
+    @GetMapping
     public String index(String classTable, Model model){//从前台获取要对哪个班级进行crud
         model.addAttribute("classTable",classTable);
-        return "/classPersonalinfo/list";
+        return "classPersonalinfo/list";
     }
 
     @RequestMapping("/add")
     public String add(){
-        return "/classPersonalinfo/add";
+        return "classPersonalinfo/add";
     }
 
     @RequestMapping("/save")
@@ -59,20 +62,20 @@ public class ClassPersonalInfoController {
         System.out.println("studentInfo:"+studentInfo);
         model.addAttribute("studentInfo",studentInfo);
 
-        return "/classPersonalinfo/update";
+        return "classPersonalinfo/update";
     }
 
     @RequestMapping("/detail")
     public String detail(String studentNumber,String className,Model model){//查询某一学生的信息
         PersonalInfo studentInfo = classPersonalInfoService.findByStudentNumber(studentNumber, className);
         model.addAttribute("studentInfo",studentInfo);
-        return "/classPersonalinfo/studentInfo";
+        return "classPersonalinfo/studentInfo";
     }
 
     @RequestMapping("/personalCourse")
     public String personalCourse(String className,Model model){
         model.addAttribute("className", className);
-        return "/classPersonalinfo/personalCourse";
+        return "classPersonalinfo/personalCourse";
     }
     @RequestMapping("/personalCourseJson")
     @ResponseBody

@@ -22,7 +22,7 @@ public class MajorCourseController {
     public String list(String majorCourse, Model model) {
         model.addAttribute("majorCourse", majorCourse);
 
-        return "/majorCourse/list";
+        return "majorCourse/list";
     }
 
     @RequestMapping("/courseJson")
