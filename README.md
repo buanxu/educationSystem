@@ -9,8 +9,9 @@
 #### 软件架构
 软件架构说明
   本项目用到的技术
+    本项目由maven构建
     前端：layui（包含jequery、ajax、json、css）、echarts(用来做图表的)
     后端：springboot及thymeleaf、mybatis、tomcat是springboot内置的
     数据库：mysql、c3p0连接池
-    本项目由maven构建
+    地址：http://81.70.96.70:8888/educationSystem/index
 
